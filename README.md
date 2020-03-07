@@ -9,11 +9,14 @@ First two arguments are required. Pass `null` to skip a color.
 
 Example:
 ```js
+// my-app.js
+const createColorizer = require('node-colors');
 const warning = createColorizer('yellow', 'red', 'bold');
 const msg = warning('Attention: Do not do that.');
 
 console.log(msg)
 ```
+![Terminal Example](/example.png)
 
 Supported Color Names
 ---------------------
