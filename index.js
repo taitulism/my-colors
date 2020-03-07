@@ -25,9 +25,11 @@ const color8Map = new Map([
 
 const modifiersMap = new Map([
     ['bold',      1],
-    ['dim',       2],
+//  ['dim',       2],
+//  ['italic',    3],
     ['underline', 4],
-    ['reverse',   7],
+    ['invert',    7],
+//  ['strike',    9],
 ]);
 
 function parseColor (colorName, isForeground = true) {
@@ -58,7 +60,7 @@ function parseModifier (modifier) {
     return START + modNumber + END;
 }
 
-function createColor (fgColor, bgColor, modifier) {
+function createColorizer (fgColor, bgColor, modifier) {
     const fg = parseColor(fgColor, true);
     const bg = parseColor(bgColor, false);
     const mod = parseModifier(modifier);
@@ -69,4 +71,4 @@ function createColor (fgColor, bgColor, modifier) {
     };
 }
 
-module.exports = createColor;
+module.exports = createColorizer;
