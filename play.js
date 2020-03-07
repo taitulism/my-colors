@@ -1,22 +1,11 @@
 const createColorizer = require('./index');
 
-const highlight = createColorizer('yellow', 'blue');
-const highlight2 = createColorizer('yellow', 'blue', 'reverse');
+// const color = createColorizer(null, 'blue');
+const color256 = createColorizer('#ff8700', 'underline');
+// const colorRgb = createColorizer([250, 77, 77]);
 
-const warn = createColorizer('yellow', 'red', 'bold');
+const msg1 = color256('Title');
+// const msg2 = colorRgb('This is the message');
 
-// const msg = highlight('wiki wiki pedia');
-// const msg2 = highlight2('wiki wiki pedia');
-const msg2 = warn('dont!');
-
-// console.log(msg);
-// console.log(msg2);
-// console.log('reset');
-
-// console.log(warn('Warning:'))
-// console.log('Do not do that!')
-
-const warning = createColorizer('yellow', 'red', 'bold');
-const msg = warning('Attention: Do not do that.');
-
-console.log(msg)
+console.log(msg1)
+// console.log(msg2)

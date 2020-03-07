@@ -22,7 +22,6 @@ ansi256
 "[38;5;83m"
 
 ansi16m RGB  
-`\u001B[38;5;${code}m`   
 "[38;2;200;40;40m"
 
 old func body
