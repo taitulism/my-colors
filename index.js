@@ -1,15 +1,3 @@
-const ESC_CHAR = '\u001B';
-const START = ESC_CHAR + '[';
-const END = 'm';
-const BRIGHT = 'bright';
-const BRIGHT_LEN = BRIGHT.length;
-const BRIGHT_MOD = ';1';
-const COLOR_RESET = ESC_CHAR + '[0m';
-const FG_256 = '38;5;';
-const BG_256 = '48;5;';
-const FG_RGB = '38;2;';
-const BG_RGB = '48;2;';
-
 const color8Map = new Map([
     ['black',   0],
     ['red',     1],
