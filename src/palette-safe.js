@@ -6,11 +6,8 @@ const {
     BRIGHT_LEN,
     BRIGHT_MOD,
     COLOR_RESET,
-    FG_256,
-    BG_256,
-    FG_RGB,
-    BG_RGB,
 } = require('./constants');
+const {parseModifier} = require('./common');
 
 const color8Map = new Map([
     ['black',   0],
@@ -24,17 +21,41 @@ const color8Map = new Map([
 ]);
 
 const palette = {
-    colors,
+    // colors,
     createColor (fgColor, bgColor, modifier) {
-        const fg = parseColor(fgColor, true);
-        const bg = parseColor(bgColor, false);
+        const fg = parseColorName(fgColor, true);
+        const bg = parseColorName(bgColor, false);
         const mod = parseModifier(modifier);
 
         return function colorize (txt) {
-            const coloredText = mod + fg + bg + txt + COLOR_RESET;
+            const coloredText = fg + bg + mod + txt + COLOR_RESET;
             return coloredText;
         };
     }
+};
+
+function parseColorName (colorName, isForeground) {
+	if (!colorName) return '';
+    colorName = colorName.toLowerCase();
+
+    let isBright = false;
+
+    if (colorName.startsWith(BRIGHT)) {
+        colorName = colorName.substr(BRIGHT_LEN);
+        isBright = true;
+    }
+
+    const baseNumber = color8Map.get(colorName);
+
+    if (!baseNumber) {
+        return parseModifier(colorName);
+    }
+    const colorNumber = baseNumber + (isForeground ? 30 : 40);
+
+    const colorStr = String(colorNumber);
+    const brightMod = isBright ? BRIGHT_MOD : '';
+
+    return START + colorStr + brightMod + END;
 }
 
 module.exports = palette;

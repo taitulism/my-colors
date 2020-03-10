@@ -1,11 +1,5 @@
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
-const expect = chai.expect;
+const safePaletteTest = require('./safe-palette');
 
-const TPL = require('../');
-
-describe('TPL', () => {
-	it('is ok', () => {
-		expect(TPL).to.be.ok;
-	});
+describe('node-colors', () => {
+	describe('Safe Palette', safePaletteTest);
 });

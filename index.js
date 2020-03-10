@@ -9,15 +9,6 @@ const color8Map = new Map([
     ['white',   7],
 ]);
 
-const modifiersMap = new Map([
-    ['bold',      1],
-//  ['dim',       2],
-//  ['italic',    3],
-    ['underline', 4],
-    ['invert',    7],
-//  ['strike',    9],
-]);
-
 function parseColor (color, isForeground = true) {
     if (color == null) return '';
 
@@ -36,7 +27,7 @@ function parseColor (color, isForeground = true) {
     }
     else {
         throw new Error('Invalid color argument type', color);
-    }    
+    }
 }
 
 function parse256Color (color256, isForeground) {
@@ -48,13 +39,13 @@ function parse256Color (color256, isForeground) {
 function parseRgbColor (RGBColor, isForeground) {
     const rgbStr = RGBColor.join(';')
     const prefix = isForeground ? FG_RGB : BG_RGB;
-    
+
     return START + prefix + rgbStr + END;
 }
 
 function parseColorName (colorName, isForeground) {
     colorName = colorName.toLowerCase();
-    
+
     let isBright = false;
 
     if (colorName.startsWith(BRIGHT)) {
@@ -75,23 +66,14 @@ function parseColorName (colorName, isForeground) {
     return START + colorStr + brightMod + END;
 }
 
-function parseModifier (modifier) {
-    if (!modifier) return '';
-
-    const modNumber = modifiersMap.get(modifier);
-
-    if (!modNumber) return '';
-    return START + modNumber + END;
-}
-
 function hex2rgb (hex) {
     hex = hex.substr(1);
-    
+
     const num = parseInt(hex, 16);
     const R = (num >> 16) & 0xFF;
     const G = (num >> 8) & 0xFF;
     const B = num & 0xFF;
-    
+
     return [R, G, B];
 }
 
