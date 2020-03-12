@@ -1,3 +1,6 @@
+// filter
+const emptyStrings = item => item !== '';
+
 const modifiersMap = new Map([
 	['bold',      1],
 	['dim',       2],
@@ -18,6 +21,7 @@ function parseModifier (modifier) {
 }
 
 module.exports = {
+	emptyStrings,
 	modifiersMap,
 	parseModifier,
 };

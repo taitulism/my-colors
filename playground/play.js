@@ -1,33 +1,28 @@
 /* eslint-disable no-console */
 const safePalette = require('../src/safe-palette');
+const palette256 = require('../src/256-palette');
+
 const TEXT = 'This is the message';
 
-// const color1 = safePalette.createColor('white', 'blue');
-// const color2 = safePalette.createColor('white', 'brightblue');
-// const color3 = safePalette.createColor('white', 'brightblue', 'bold');
+// Safe Colors
+/*
+const black   = safePalette.colors.black('BLACK');
+const red     = safePalette.colors.red('RED');
+const green   = safePalette.colors.green('GREEN');
+const yellow  = safePalette.colors.yellow('YELLOW');
+const blue    = safePalette.colors.blue('BLUE');
+const magenta = safePalette.colors.magenta('MAGENTA');
+const cyan    = safePalette.colors.cyan('CYAN');
+const white   = safePalette.colors.white('WHITE');
 
-// const msg1 = color1(TEXT);
-// const msg2 = color2(TEXT);
-// const msg3 = color3(TEXT);
-// const msg4 = safePalette.colors.red(TEXT);
-
-const black   = safePalette.colors.black(TEXT);
-const red     = safePalette.colors.red(TEXT);
-const green   = safePalette.colors.green(TEXT);
-const yellow  = safePalette.colors.yellow(TEXT);
-const blue    = safePalette.colors.blue(TEXT);
-const magenta = safePalette.colors.magenta(TEXT);
-const cyan    = safePalette.colors.cyan(TEXT);
-const white   = safePalette.colors.white(TEXT);
-
-const boldBlack   = safePalette.colors.bold.black(TEXT);
-const boldRed     = safePalette.colors.bold.red(TEXT);
-const boldGreen   = safePalette.colors.bold.green(TEXT);
-const boldYellow  = safePalette.colors.bold.yellow(TEXT);
-const boldBlue    = safePalette.colors.bold.blue(TEXT);
-const boldMagenta = safePalette.colors.bold.magenta(TEXT);
-const boldCyan    = safePalette.colors.bold.cyan(TEXT);
-const boldWhite   = safePalette.colors.bold.white(TEXT);
+const boldBlack   = safePalette.colors.bold.black('BOLD BLACK');
+const boldRed     = safePalette.colors.bold.red('BOLD RED');
+const boldGreen   = safePalette.colors.bold.green('BOLD GREEN');
+const boldYellow  = safePalette.colors.bold.yellow('BOLD YELLOW');
+const boldBlue    = safePalette.colors.bold.blue('BOLD BLUE');
+const boldMagenta = safePalette.colors.bold.magenta('BOLD MAGENTA');
+const boldCyan    = safePalette.colors.bold.cyan('BOLD CYAN');
+const boldWhite   = safePalette.colors.bold.white('BOLD WHITE');
 
 console.log(black);
 console.log(red);
@@ -46,3 +41,17 @@ console.log(boldBlue);
 console.log(boldMagenta);
 console.log(boldCyan);
 console.log(boldWhite);
+*/
+
+
+// 256 colors
+for (let i = 0; i < 256; i+=6) {
+	const colorAry = [];
+
+	for (let j = 0; j < 6; j++) {
+		const colorize = palette256.createColor(0, i+j);
+		const msg = colorize(` #${j} `);
+		colorAry.push(msg);
+	}
+
+}

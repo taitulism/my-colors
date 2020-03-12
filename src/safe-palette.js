@@ -1,3 +1,4 @@
+const {emptyStrings, parseModifier} = require('./common');
 const {
 	START,
 	FG,
@@ -5,7 +6,6 @@ const {
 	END,
 	COLOR_RESET,
 } = require('./constants');
-const {parseModifier} = require('./common');
 
 const color8Map = new Map([
 	['black',   0],
@@ -35,9 +35,6 @@ const BOLD_BLUE = START + '34;1' + END;
 const BOLD_MAGENTA = START + '35;1' + END;
 const BOLD_CYAN = START + '36;1' + END;
 const BOLD_WHITE = START + '37;1' + END;
-
-
-const emptyStrings = item => item !== '';
 
 const palette = {
 	colors: {
