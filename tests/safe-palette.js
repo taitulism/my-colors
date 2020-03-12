@@ -1,4 +1,4 @@
-const safePalette = require('../src/palette-safe');
+const safePalette = require('../src/safe-palette');
 const {expect} = require('chai');
 
 const TEXT = 'TEXT';
@@ -98,6 +98,48 @@ module.exports = function () {
 				expect(underlined).to.equal(`\u001b[37;41;4m${TEXT}\u001b[0m`);
 				expect(inverted).to.equal(`\u001b[37;41;7m${TEXT}\u001b[0m`);
 				expect(striked).to.equal(`\u001b[37;41;9m${TEXT}\u001b[0m`);
+			});
+		});
+
+		describe('Palette Colors', () => {
+			it('holds base colors', () => {
+				const black   = safePalette.colors.black(TEXT);
+				const red     = safePalette.colors.red(TEXT);
+				const green   = safePalette.colors.green(TEXT);
+				const yellow  = safePalette.colors.yellow(TEXT);
+				const blue    = safePalette.colors.blue(TEXT);
+				const magenta = safePalette.colors.magenta(TEXT);
+				const cyan    = safePalette.colors.cyan(TEXT);
+				const white   = safePalette.colors.white(TEXT);
+
+				expect(black).to.equal(`\u001b[30m${TEXT}\u001b[0m`);
+				expect(red).to.equal(`\u001b[31m${TEXT}\u001b[0m`);
+				expect(green).to.equal(`\u001b[32m${TEXT}\u001b[0m`);
+				expect(yellow).to.equal(`\u001b[33m${TEXT}\u001b[0m`);
+				expect(blue).to.equal(`\u001b[34m${TEXT}\u001b[0m`);
+				expect(magenta).to.equal(`\u001b[35m${TEXT}\u001b[0m`);
+				expect(cyan).to.equal(`\u001b[36m${TEXT}\u001b[0m`);
+				expect(white).to.equal(`\u001b[37m${TEXT}\u001b[0m`);
+			});
+
+			it('holds bold base colors', () => {
+				const black   = safePalette.colors.bold.black(TEXT);
+				const red     = safePalette.colors.bold.red(TEXT);
+				const green   = safePalette.colors.bold.green(TEXT);
+				const yellow  = safePalette.colors.bold.yellow(TEXT);
+				const blue    = safePalette.colors.bold.blue(TEXT);
+				const magenta = safePalette.colors.bold.magenta(TEXT);
+				const cyan    = safePalette.colors.bold.cyan(TEXT);
+				const white   = safePalette.colors.bold.white(TEXT);
+
+				expect(black).to.equal(`\u001b[30;1m${TEXT}\u001b[0m`);
+				expect(red).to.equal(`\u001b[31;1m${TEXT}\u001b[0m`);
+				expect(green).to.equal(`\u001b[32;1m${TEXT}\u001b[0m`);
+				expect(yellow).to.equal(`\u001b[33;1m${TEXT}\u001b[0m`);
+				expect(blue).to.equal(`\u001b[34;1m${TEXT}\u001b[0m`);
+				expect(magenta).to.equal(`\u001b[35;1m${TEXT}\u001b[0m`);
+				expect(cyan).to.equal(`\u001b[36;1m${TEXT}\u001b[0m`);
+				expect(white).to.equal(`\u001b[37;1m${TEXT}\u001b[0m`);
 			});
 		});
 	});

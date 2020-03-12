@@ -155,7 +155,7 @@ module.exports = {
 		"no-lone-blocks": "error",
 		"no-lonely-if": "error",
 		"no-loop-func": "error",
-		"no-magic-numbers": ["error", { "ignore": [0, 1] }],
+//		"no-magic-numbers": "off",
 		"no-misleading-character-class": "error",
 		"no-mixed-operators": "error",
 		"no-mixed-requires": "error",
@@ -258,7 +258,7 @@ module.exports = {
 //		"prefer-reflect": "off", // Deprecated
 		"prefer-rest-params": "error",
 		"prefer-spread": "error",
-		"prefer-template": "error",
+//		"prefer-template": "off",
 		"quote-props": ["error", "as-needed"],
 		"quotes": [
 			"error",
