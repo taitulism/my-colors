@@ -1,6 +1,7 @@
 const {
-	ESC_CHAR,
 	START,
+	FG,
+	BG,
 	END,
 	COLOR_RESET,
 } = require('./constants');
@@ -23,10 +24,10 @@ const palette = {
 		const bg = parseColorName(bgColor, false);
 		const mod = parseModifier(modifier);
 
-		return function colorize (txt) {
-			const coloredText = fg + bg + mod + txt + COLOR_RESET;
+		const color = [fg, bg, mod].filter(x => (x !== '')).join(';');
 
-			return coloredText;
+		return function colorize (txt) {
+			return START + color + END + txt + COLOR_RESET;
 		};
 	},
 };
@@ -37,14 +38,9 @@ function parseColorName (colorName, isForeground) {
 
 	const baseNumber = color8Map.get(colorName);
 
-	if (baseNumber == null) {
-		return parseModifier(colorName);
-	}
-	const colorNumber = baseNumber + (isForeground ? 30 : 40);
+	if (baseNumber == null) return parseModifier(colorName);
 
-	const colorStr = String(colorNumber);
-
-	return START + colorStr + END;
+	return baseNumber + (isForeground ? FG : BG);
 }
 
 module.exports = palette;

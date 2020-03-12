@@ -67,28 +67,37 @@ module.exports = function () {
 				const cyanBgText    = cyanBg(TEXT);
 				const whiteBgText   = whiteBg(TEXT);
 
-				expect(blackBgText).to.equal(`\u001b[37m\u001b[40m${TEXT}\u001b[0m`);
-				expect(redBgText).to.equal(`\u001b[30m\u001b[41m${TEXT}\u001b[0m`);
-				expect(greenBgText).to.equal(`\u001b[30m\u001b[42m${TEXT}\u001b[0m`);
-				expect(yellowBgText).to.equal(`\u001b[30m\u001b[43m${TEXT}\u001b[0m`);
-				expect(blueBgText).to.equal(`\u001b[30m\u001b[44m${TEXT}\u001b[0m`);
-				expect(magentaBgText).to.equal(`\u001b[30m\u001b[45m${TEXT}\u001b[0m`);
-				expect(cyanBgText).to.equal(`\u001b[30m\u001b[46m${TEXT}\u001b[0m`);
-				expect(whiteBgText).to.equal(`\u001b[30m\u001b[47m${TEXT}\u001b[0m`);
+				expect(blackBgText).to.equal(`\u001b[37;40m${TEXT}\u001b[0m`);
+				expect(redBgText).to.equal(`\u001b[30;41m${TEXT}\u001b[0m`);
+				expect(greenBgText).to.equal(`\u001b[30;42m${TEXT}\u001b[0m`);
+				expect(yellowBgText).to.equal(`\u001b[30;43m${TEXT}\u001b[0m`);
+				expect(blueBgText).to.equal(`\u001b[30;44m${TEXT}\u001b[0m`);
+				expect(magentaBgText).to.equal(`\u001b[30;45m${TEXT}\u001b[0m`);
+				expect(cyanBgText).to.equal(`\u001b[30;46m${TEXT}\u001b[0m`);
+				expect(whiteBgText).to.equal(`\u001b[30;47m${TEXT}\u001b[0m`);
 			});
 
 			it('supports modifiers', () => {
 				const bold      = safePalette.createColor('white', 'black', 'bold');
-				const invert    = safePalette.createColor('black', 'white', 'invert');
+				const dim       = safePalette.createColor('white', 'red',   'dim');
+				const italic    = safePalette.createColor('white', 'red',   'italic');
 				const underline = safePalette.createColor('white', 'red',   'underline');
+				const invert    = safePalette.createColor('white', 'red',   'invert');
+				const strike    = safePalette.createColor('white', 'red',   'strike');
 
 				const bolded     = bold(TEXT);
-				const inverted   = invert(TEXT);
+				const dimmed     = dim(TEXT);
+				const italiced   = italic(TEXT);
 				const underlined = underline(TEXT);
+				const inverted   = invert(TEXT);
+				const striked    = strike(TEXT);
 
-				expect(bolded).to.equal(`\u001b[37m\u001b[40m\u001b[1m${TEXT}\u001b[0m`);
-				expect(inverted).to.equal(`\u001b[30m\u001b[47m\u001b[7m${TEXT}\u001b[0m`);
-				expect(underlined).to.equal(`\u001b[37m\u001b[41m\u001b[4m${TEXT}\u001b[0m`);
+				expect(bolded).to.equal(`\u001b[37;40;1m${TEXT}\u001b[0m`);
+				expect(dimmed).to.equal(`\u001b[37;41;2m${TEXT}\u001b[0m`);
+				expect(italiced).to.equal(`\u001b[37;41;3m${TEXT}\u001b[0m`);
+				expect(underlined).to.equal(`\u001b[37;41;4m${TEXT}\u001b[0m`);
+				expect(inverted).to.equal(`\u001b[37;41;7m${TEXT}\u001b[0m`);
+				expect(striked).to.equal(`\u001b[37;41;9m${TEXT}\u001b[0m`);
 			});
 		});
 	});
