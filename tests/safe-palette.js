@@ -20,23 +20,23 @@ module.exports = function () {
 			});
 
 			it('supports 8 base colors', () => {
-				const black = safePalette.createColor('black');
-				const red = safePalette.createColor('red');
-				const green = safePalette.createColor('green');
-				const yellow = safePalette.createColor('yellow');
-				const blue = safePalette.createColor('blue');
+				const black   = safePalette.createColor('black');
+				const red     = safePalette.createColor('red');
+				const green   = safePalette.createColor('green');
+				const yellow  = safePalette.createColor('yellow');
+				const blue    = safePalette.createColor('blue');
 				const magenta = safePalette.createColor('magenta');
-				const cyan = safePalette.createColor('cyan');
-				const white = safePalette.createColor('white');
+				const cyan    = safePalette.createColor('cyan');
+				const white   = safePalette.createColor('white');
 
-				const blackText = black(TEXT);
-				const redText = red(TEXT);
-				const greenText = green(TEXT);
-				const yellowText = yellow(TEXT);
-				const blueText = blue(TEXT);
+				const blackText   = black(TEXT);
+				const redText     = red(TEXT);
+				const greenText   = green(TEXT);
+				const yellowText  = yellow(TEXT);
+				const blueText    = blue(TEXT);
 				const magentaText = magenta(TEXT);
-				const cyanText = cyan(TEXT);
-				const whiteText = white(TEXT);
+				const cyanText    = cyan(TEXT);
+				const whiteText   = white(TEXT);
 
 				expect(blackText).to.equal(`\u001b[30m${TEXT}\u001b[0m`);
 				expect(redText).to.equal(`\u001b[31m${TEXT}\u001b[0m`);
@@ -48,53 +48,24 @@ module.exports = function () {
 				expect(whiteText).to.equal(`\u001b[37m${TEXT}\u001b[0m`);
 			});
 
-			it('supports 8 base bright colors', () => {
-				const black = safePalette.createColor('brightBlack');
-				const red = safePalette.createColor('brightRed');
-				const green = safePalette.createColor('brightGreen');
-				const yellow = safePalette.createColor('brightYellow');
-				const blue = safePalette.createColor('brightBlue');
-				const magenta = safePalette.createColor('brightMagenta');
-				const cyan = safePalette.createColor('brightCyan');
-				const white = safePalette.createColor('brightWhite');
-
-				const blackText = black(TEXT);
-				const redText = red(TEXT);
-				const greenText = green(TEXT);
-				const yellowText = yellow(TEXT);
-				const blueText = blue(TEXT);
-				const magentaText = magenta(TEXT);
-				const cyanText = cyan(TEXT);
-				const whiteText = white(TEXT);
-
-				expect(blackText).to.equal(`\u001b[30;1m${TEXT}\u001b[0m`);
-				expect(redText).to.equal(`\u001b[31;1m${TEXT}\u001b[0m`);
-				expect(greenText).to.equal(`\u001b[32;1m${TEXT}\u001b[0m`);
-				expect(yellowText).to.equal(`\u001b[33;1m${TEXT}\u001b[0m`);
-				expect(blueText).to.equal(`\u001b[34;1m${TEXT}\u001b[0m`);
-				expect(magentaText).to.equal(`\u001b[35;1m${TEXT}\u001b[0m`);
-				expect(cyanText).to.equal(`\u001b[36;1m${TEXT}\u001b[0m`);
-				expect(whiteText).to.equal(`\u001b[37;1m${TEXT}\u001b[0m`);
-			});
-
 			it('supports background colors', () => {
-				const blackBg = safePalette.createColor('white', 'black');
-				const redBg = safePalette.createColor('black', 'red');
-				const greenBg = safePalette.createColor('black', 'green');
-				const yellowBg = safePalette.createColor('black', 'yellow');
-				const blueBg = safePalette.createColor('black', 'blue');
+				const blackBg   = safePalette.createColor('white', 'black');
+				const redBg     = safePalette.createColor('black', 'red');
+				const greenBg   = safePalette.createColor('black', 'green');
+				const yellowBg  = safePalette.createColor('black', 'yellow');
+				const blueBg    = safePalette.createColor('black', 'blue');
 				const magentaBg = safePalette.createColor('black', 'magenta');
-				const cyanBg = safePalette.createColor('black', 'cyan');
-				const whiteBg = safePalette.createColor('black', 'white');
+				const cyanBg    = safePalette.createColor('black', 'cyan');
+				const whiteBg   = safePalette.createColor('black', 'white');
 
-				const blackBgText = blackBg(TEXT);
-				const redBgText = redBg(TEXT);
-				const greenBgText = greenBg(TEXT);
-				const yellowBgText = yellowBg(TEXT);
-				const blueBgText = blueBg(TEXT);
+				const blackBgText   = blackBg(TEXT);
+				const redBgText     = redBg(TEXT);
+				const greenBgText   = greenBg(TEXT);
+				const yellowBgText  = yellowBg(TEXT);
+				const blueBgText    = blueBg(TEXT);
 				const magentaBgText = magentaBg(TEXT);
-				const cyanBgText = cyanBg(TEXT);
-				const whiteBgText = whiteBg(TEXT);
+				const cyanBgText    = cyanBg(TEXT);
+				const whiteBgText   = whiteBg(TEXT);
 
 				expect(blackBgText).to.equal(`\u001b[37m\u001b[40m${TEXT}\u001b[0m`);
 				expect(redBgText).to.equal(`\u001b[30m\u001b[41m${TEXT}\u001b[0m`);
@@ -107,17 +78,17 @@ module.exports = function () {
 			});
 
 			it('supports modifiers', () => {
-				const bold = safePalette.createColor('white', 'black', 'bold');
-				const underline = safePalette.createColor('white', 'red', 'underline');
-				const invert = safePalette.createColor('black', 'white', 'invert');
+				const bold      = safePalette.createColor('white', 'black', 'bold');
+				const invert    = safePalette.createColor('black', 'white', 'invert');
+				const underline = safePalette.createColor('white', 'red',   'underline');
 
-				const bolded = bold(TEXT);
+				const bolded     = bold(TEXT);
+				const inverted   = invert(TEXT);
 				const underlined = underline(TEXT);
-				const inverted = invert(TEXT);
 
 				expect(bolded).to.equal(`\u001b[37m\u001b[40m\u001b[1m${TEXT}\u001b[0m`);
-				expect(underlined).to.equal(`\u001b[37m\u001b[41m\u001b[4m${TEXT}\u001b[0m`);
 				expect(inverted).to.equal(`\u001b[30m\u001b[47m\u001b[7m${TEXT}\u001b[0m`);
+				expect(underlined).to.equal(`\u001b[37m\u001b[41m\u001b[4m${TEXT}\u001b[0m`);
 			});
 		});
 	});

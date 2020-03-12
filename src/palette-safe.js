@@ -2,9 +2,6 @@ const {
 	ESC_CHAR,
 	START,
 	END,
-	BRIGHT,
-	BRIGHT_LEN,
-	BRIGHT_MOD,
 	COLOR_RESET,
 } = require('./constants');
 const {parseModifier} = require('./common');
@@ -21,7 +18,6 @@ const color8Map = new Map([
 ]);
 
 const palette = {
-    // colors,
 	createColor (fgColor, bgColor, modifier) {
 		const fg = parseColorName(fgColor, true);
 		const bg = parseColorName(bgColor, false);
@@ -32,19 +28,12 @@ const palette = {
 
 			return coloredText;
 		};
-	}
+	},
 };
 
 function parseColorName (colorName, isForeground) {
 	if (!colorName) return '';
 	colorName = colorName.toLowerCase();
-
-	let isBright = false;
-
-	if (colorName.startsWith(BRIGHT)) {
-		colorName = colorName.substr(BRIGHT_LEN);
-		isBright = true;
-	}
 
 	const baseNumber = color8Map.get(colorName);
 
@@ -54,9 +43,8 @@ function parseColorName (colorName, isForeground) {
 	const colorNumber = baseNumber + (isForeground ? 30 : 40);
 
 	const colorStr = String(colorNumber);
-	const brightMod = isBright ? BRIGHT_MOD : '';
 
-	return START + colorStr + brightMod + END;
+	return START + colorStr + END;
 }
 
 module.exports = palette;
