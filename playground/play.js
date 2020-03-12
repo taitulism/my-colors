@@ -1,3 +1,5 @@
+/* eslint-disable max-statements */
+/* eslint-disable max-lines-per-function */
 /* eslint-disable no-console */
 const safePalette = require('../src/safe-palette');
 const palette256 = require('../src/256-palette');
@@ -45,13 +47,55 @@ console.log(boldWhite);
 
 
 // 256 colors
-for (let i = 0; i < 256; i+=6) {
-	const colorAry = [];
+function print256 () {
+	const perRow = 12;
 
-	for (let j = 0; j < 6; j++) {
-		const colorize = palette256.createColor(0, i+j);
-		const msg = colorize(` #${j} `);
-		colorAry.push(msg);
+	// base colors & bold
+	console.log('Base & bright colors:');
+	for (let i = 0; i < 16; i += 8) {
+		const colorAry = [];
+
+		for (let j = 0; j < 8; j++) {
+			const colorNumber = i + j;
+			const colorize = palette256.createColor(0, colorNumber);
+			const colorTxt = colorNumber < 10 ? '  ' + colorNumber : ' ' + colorNumber;
+			const msg = colorize(` ${colorTxt} `);
+
+			colorAry.push(msg);
+		}
+		console.log(colorAry.join(''));
 	}
 
+	console.log('\nColors:');
+	for (let i = 16; i < 232; i += perRow) {
+		const colorAry = [];
+
+		for (let j = 0; j < perRow; j++) {
+			const colorNumber = i + j;
+			const colorize = palette256.createColor(0, colorNumber);
+			const colorTxt = colorNumber < 100 ? ' ' + colorNumber : colorNumber;
+			const msg = colorize(` ${colorTxt} `);
+
+			colorAry.push(msg);
+		}
+
+		console.log(colorAry.join(''));
+	}
+
+	console.log('\nBlack > Gray Scale > White');
+	for (let i = 232; i < 256; i += perRow) {
+		const colorAry = [];
+
+		for (let j = 0; j < perRow; j++) {
+			const colorNumber = i + j;
+			const fg = i < 244 ? 7 : 0;
+			const colorize = palette256.createColor(fg, colorNumber);
+			const msg = colorize(` ${colorNumber} `);
+
+			colorAry.push(msg);
+		}
+		console.log(colorAry.join(''));
+	}
 }
+
+print256();
