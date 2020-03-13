@@ -12,69 +12,45 @@ module.exports = function () {
 		});
 
 		describe('Colorize', () => {
-			it.only('wraps given string with ansi chars', () => {
+			it('wraps given string with ansi chars', () => {
 				const colorize = palette256.createColor(120);
 				const colorized = colorize(TEXT);
 
-				expect(colorized).to.equal(`\u001b[34m${TEXT}\u001b[0m`);
+				expect(colorized).to.equal(`\u001b[38;5;120m${TEXT}\u001b[0m`);
 			});
 
-			it('supports 8 base colors', () => {
-				const black   = palette256.createColor('black');
-				const red     = palette256.createColor('red');
-				const green   = palette256.createColor('green');
-				const yellow  = palette256.createColor('yellow');
-				const blue    = palette256.createColor('blue');
-				const magenta = palette256.createColor('magenta');
-				const cyan    = palette256.createColor('cyan');
-				const white   = palette256.createColor('white');
+			it('supports 256 foreground colors (0-255)', () => {
+				const black  = palette256.createColor(0);
+				const red    = palette256.createColor(160);
+				const yellow = palette256.createColor(190);
+				const white  = palette256.createColor(255);
 
-				const blackText   = black(TEXT);
-				const redText     = red(TEXT);
-				const greenText   = green(TEXT);
-				const yellowText  = yellow(TEXT);
-				const blueText    = blue(TEXT);
-				const magentaText = magenta(TEXT);
-				const cyanText    = cyan(TEXT);
-				const whiteText   = white(TEXT);
+				const blackText  = black(TEXT);
+				const redText    = red(TEXT);
+				const yellowText = yellow(TEXT);
+				const whiteText  = white(TEXT);
 
-				expect(blackText).to.equal(`\u001b[30m${TEXT}\u001b[0m`);
-				expect(redText).to.equal(`\u001b[31m${TEXT}\u001b[0m`);
-				expect(greenText).to.equal(`\u001b[32m${TEXT}\u001b[0m`);
-				expect(yellowText).to.equal(`\u001b[33m${TEXT}\u001b[0m`);
-				expect(blueText).to.equal(`\u001b[34m${TEXT}\u001b[0m`);
-				expect(magentaText).to.equal(`\u001b[35m${TEXT}\u001b[0m`);
-				expect(cyanText).to.equal(`\u001b[36m${TEXT}\u001b[0m`);
-				expect(whiteText).to.equal(`\u001b[37m${TEXT}\u001b[0m`);
+				expect(blackText).to.equal(`\u001b[38;5;0m${TEXT}\u001b[0m`);
+				expect(redText).to.equal(`\u001b[38;5;160m${TEXT}\u001b[0m`);
+				expect(yellowText).to.equal(`\u001b[38;5;190m${TEXT}\u001b[0m`);
+				expect(whiteText).to.equal(`\u001b[38;5;255m${TEXT}\u001b[0m`);
 			});
 
-			it('supports background colors', () => {
-				const blackBg   = palette256.createColor('white', 'black');
-				const redBg     = palette256.createColor('black', 'red');
-				const greenBg   = palette256.createColor('black', 'green');
-				const yellowBg  = palette256.createColor('black', 'yellow');
-				const blueBg    = palette256.createColor('black', 'blue');
-				const magentaBg = palette256.createColor('black', 'magenta');
-				const cyanBg    = palette256.createColor('black', 'cyan');
-				const whiteBg   = palette256.createColor('black', 'white');
+			it.only('supports 256 background colors', () => {
+				const black  = palette256.createColor(15, 0);
+				const red    = palette256.createColor(15, 160);
+				const yellow = palette256.createColor(0, 190);
+				const white  = palette256.createColor(0, 255);
 
-				const blackBgText   = blackBg(TEXT);
-				const redBgText     = redBg(TEXT);
-				const greenBgText   = greenBg(TEXT);
-				const yellowBgText  = yellowBg(TEXT);
-				const blueBgText    = blueBg(TEXT);
-				const magentaBgText = magentaBg(TEXT);
-				const cyanBgText    = cyanBg(TEXT);
-				const whiteBgText   = whiteBg(TEXT);
+				const blackBgText  = black(TEXT);
+				const redBgText    = red(TEXT);
+				const yellowBgText = yellow(TEXT);
+				const whiteBgText  = white(TEXT);
 
-				expect(blackBgText).to.equal(`\u001b[37;40m${TEXT}\u001b[0m`);
-				expect(redBgText).to.equal(`\u001b[30;41m${TEXT}\u001b[0m`);
-				expect(greenBgText).to.equal(`\u001b[30;42m${TEXT}\u001b[0m`);
-				expect(yellowBgText).to.equal(`\u001b[30;43m${TEXT}\u001b[0m`);
-				expect(blueBgText).to.equal(`\u001b[30;44m${TEXT}\u001b[0m`);
-				expect(magentaBgText).to.equal(`\u001b[30;45m${TEXT}\u001b[0m`);
-				expect(cyanBgText).to.equal(`\u001b[30;46m${TEXT}\u001b[0m`);
-				expect(whiteBgText).to.equal(`\u001b[30;47m${TEXT}\u001b[0m`);
+				expect(blackBgText).to.equal(`\u001b[38;5;15;48;5;0m${TEXT}\u001b[0m`);
+				expect(redBgText).to.equal(`\u001b[38;5;15;48;5;160m${TEXT}\u001b[0m`);
+				expect(yellowBgText).to.equal(`\u001b[38;5;0;48;5;190m${TEXT}\u001b[0m`);
+				expect(whiteBgText).to.equal(`\u001b[38;5;0;48;5;255m${TEXT}\u001b[0m`);
 			});
 
 			it('supports modifiers', () => {

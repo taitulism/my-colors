@@ -27,7 +27,7 @@ const palette = {
 function parse256Color (color256, isForeground) {
 	if (color256 == null) return '';
 	if (typeof color256 != 'number' || color256 < 0 || color256 > 255) {
-		throw new Error('0-255');
+		throw new Error('0-255 ' + color256);
 	}
 	const prefix = isForeground ? FG_256 : BG_256;
 
