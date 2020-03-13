@@ -36,7 +36,7 @@ module.exports = function () {
 				expect(whiteText).to.equal(`\u001b[38;5;255m${TEXT}\u001b[0m`);
 			});
 
-			it.only('supports 256 background colors', () => {
+			it('supports 256 background colors', () => {
 				const black  = palette256.createColor(15, 0);
 				const red    = palette256.createColor(15, 160);
 				const yellow = palette256.createColor(0, 190);
@@ -54,12 +54,12 @@ module.exports = function () {
 			});
 
 			it('supports modifiers', () => {
-				const bold      = palette256.createColor('white', 'black', 'bold');
-				const dim       = palette256.createColor('white', 'red',   'dim');
-				const italic    = palette256.createColor('white', 'red',   'italic');
-				const underline = palette256.createColor('white', 'red',   'underline');
-				const invert    = palette256.createColor('white', 'red',   'invert');
-				const strike    = palette256.createColor('white', 'red',   'strike');
+				const bold      = palette256.createColor(190, 160, 'bold');
+				const dim       = palette256.createColor(190, 160, 'dim');
+				const italic    = palette256.createColor(190, 160, 'italic');
+				const underline = palette256.createColor(190, 160, 'underline');
+				const invert    = palette256.createColor(190, 160, 'invert');
+				const strike    = palette256.createColor(190, 160, 'strike');
 
 				const bolded     = bold(TEXT);
 				const dimmed     = dim(TEXT);
@@ -68,12 +68,12 @@ module.exports = function () {
 				const inverted   = invert(TEXT);
 				const striked    = strike(TEXT);
 
-				expect(bolded).to.equal(`\u001b[37;40;1m${TEXT}\u001b[0m`);
-				expect(dimmed).to.equal(`\u001b[37;41;2m${TEXT}\u001b[0m`);
-				expect(italiced).to.equal(`\u001b[37;41;3m${TEXT}\u001b[0m`);
-				expect(underlined).to.equal(`\u001b[37;41;4m${TEXT}\u001b[0m`);
-				expect(inverted).to.equal(`\u001b[37;41;7m${TEXT}\u001b[0m`);
-				expect(striked).to.equal(`\u001b[37;41;9m${TEXT}\u001b[0m`);
+				expect(bolded).to.equal(`\u001b[38;5;190;48;5;160;1m${TEXT}\u001b[0m`);
+				expect(dimmed).to.equal(`\u001b[38;5;190;48;5;160;2m${TEXT}\u001b[0m`);
+				expect(italiced).to.equal(`\u001b[38;5;190;48;5;160;3m${TEXT}\u001b[0m`);
+				expect(underlined).to.equal(`\u001b[38;5;190;48;5;160;4m${TEXT}\u001b[0m`);
+				expect(inverted).to.equal(`\u001b[38;5;190;48;5;160;7m${TEXT}\u001b[0m`);
+				expect(striked).to.equal(`\u001b[38;5;190;48;5;160;9m${TEXT}\u001b[0m`);
 			});
 		});
 

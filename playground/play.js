@@ -82,7 +82,7 @@ function print256 () {
 		console.log(colorAry.join(''));
 	}
 
-	console.log('\nBlack > Gray Scale > White');
+	console.log('\nBlack & White, Gray Scale');
 	for (let i = 232; i < 256; i += perRow) {
 		const colorAry = [];
 
@@ -100,3 +100,27 @@ function print256 () {
 
 print256();
 
+/*
+transparent 0
+black 16
+red 1, 160, 196
+green 2
+light green 2, 28, 34
+yellow 3, 154, 190, 184, 220, 226
+blue 4, 20, 21
+light blue 12, 27, 33
+pink 5, 200, 201
+turquise 6, 44
+orange 202, 208, 214
+purple 90, 91,
+brown 130
+*/
+
+
+const msg1 = palette256.colors.yellow1(TEXT);
+const msg2 = palette256.colors.yellow2(TEXT);
+const msg3 = palette256.colors.yellow3(TEXT);
+
+console.log(msg1);
+console.log(msg2);
+console.log(msg3);
