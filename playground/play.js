@@ -117,10 +117,10 @@ brown 130
 */
 
 
-const msg1 = palette256.colors.yellow1(TEXT);
-const msg2 = palette256.colors.yellow2(TEXT);
-const msg3 = palette256.colors.yellow3(TEXT);
+const msg1 = palette256.colors.turquise1(TEXT);
+const msg2 = palette256.colors.turquise2(TEXT);
+// const msg3 = palette256.colors.pink(TEXT);
 
 console.log(msg1);
 console.log(msg2);
-console.log(msg3);
+// console.log(msg3);

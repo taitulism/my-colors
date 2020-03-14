@@ -49,17 +49,27 @@ const palette = {
 	*/
 
 palette.colors = {
-	// black: txt => BLACK + txt + COLOR_RESET,
-	// red: txt => RED + txt + COLOR_RESET,
-	// green: txt => GREEN + txt + COLOR_RESET,
+	black: palette.createColor(16),
+	darkRed: palette.createColor(124),
+	red: palette.createColor(196),
+	green: palette.createColor(22),
+	lightGreen1: palette.createColor(28),
+	lightGreen2: palette.createColor(34),
 	yellow: palette.createColor(190),
 	blue: palette.createColor(27),
 	lightBlue1: palette.createColor(33),
 	lightBlue2: palette.createColor(39),
-	// blue: txt => BLUE + txt + COLOR_RESET,
+	pink: palette.createColor(199),
+	orange: palette.createColor(202),
+	lightOrange: palette.createColor(214),
+	purple: palette.createColor(91),
+	lightPurple: palette.createColor(128),
+	brown: palette.createColor(130),
+	turquise1: palette.createColor(153),
+	turquise2: palette.createColor(44),
 	// magenta: txt => MAGENTA + txt + COLOR_RESET,
 	// cyan: txt => CYAN + txt + COLOR_RESET,
-	// white: txt => WHITE + txt + COLOR_RESET,
+	white: palette.createColor(255),
 };
 
 function parse256Color (color256, isForeground) {
