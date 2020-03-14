@@ -4,7 +4,7 @@ const {expect} = require('chai');
 const TEXT = 'TEXT';
 
 module.exports = function () {
-	describe.only('.createColor', () => {
+	describe('.createColor', () => {
 		it('returns a function', () => {
 			const colorize = palette256.createColor(120);
 
@@ -74,48 +74,6 @@ module.exports = function () {
 				expect(underlined).to.equal(`\u001b[38;5;190;48;5;160;4m${TEXT}\u001b[0m`);
 				expect(inverted).to.equal(`\u001b[38;5;190;48;5;160;7m${TEXT}\u001b[0m`);
 				expect(striked).to.equal(`\u001b[38;5;190;48;5;160;9m${TEXT}\u001b[0m`);
-			});
-		});
-
-		describe.skip('Palette Colors', () => {
-			it('holds base colors', () => {
-				const black   = palette256.colors.black(TEXT);
-				const red     = palette256.colors.red(TEXT);
-				const green   = palette256.colors.green(TEXT);
-				const yellow  = palette256.colors.yellow(TEXT);
-				const blue    = palette256.colors.blue(TEXT);
-				const magenta = palette256.colors.magenta(TEXT);
-				const cyan    = palette256.colors.cyan(TEXT);
-				const white   = palette256.colors.white(TEXT);
-
-				expect(black).to.equal(`\u001b[30m${TEXT}\u001b[0m`);
-				expect(red).to.equal(`\u001b[31m${TEXT}\u001b[0m`);
-				expect(green).to.equal(`\u001b[32m${TEXT}\u001b[0m`);
-				expect(yellow).to.equal(`\u001b[33m${TEXT}\u001b[0m`);
-				expect(blue).to.equal(`\u001b[34m${TEXT}\u001b[0m`);
-				expect(magenta).to.equal(`\u001b[35m${TEXT}\u001b[0m`);
-				expect(cyan).to.equal(`\u001b[36m${TEXT}\u001b[0m`);
-				expect(white).to.equal(`\u001b[37m${TEXT}\u001b[0m`);
-			});
-
-			it('holds bold base colors', () => {
-				const black   = palette256.colors.bold.black(TEXT);
-				const red     = palette256.colors.bold.red(TEXT);
-				const green   = palette256.colors.bold.green(TEXT);
-				const yellow  = palette256.colors.bold.yellow(TEXT);
-				const blue    = palette256.colors.bold.blue(TEXT);
-				const magenta = palette256.colors.bold.magenta(TEXT);
-				const cyan    = palette256.colors.bold.cyan(TEXT);
-				const white   = palette256.colors.bold.white(TEXT);
-
-				expect(black).to.equal(`\u001b[30;1m${TEXT}\u001b[0m`);
-				expect(red).to.equal(`\u001b[31;1m${TEXT}\u001b[0m`);
-				expect(green).to.equal(`\u001b[32;1m${TEXT}\u001b[0m`);
-				expect(yellow).to.equal(`\u001b[33;1m${TEXT}\u001b[0m`);
-				expect(blue).to.equal(`\u001b[34;1m${TEXT}\u001b[0m`);
-				expect(magenta).to.equal(`\u001b[35;1m${TEXT}\u001b[0m`);
-				expect(cyan).to.equal(`\u001b[36;1m${TEXT}\u001b[0m`);
-				expect(white).to.equal(`\u001b[37;1m${TEXT}\u001b[0m`);
 			});
 		});
 	});

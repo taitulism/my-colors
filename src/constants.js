@@ -14,6 +14,4 @@ module.exports = {
 	COLOR_RESET,
 	FG,
 	BG,
-	FG_RGB,
-	BG_RGB,
 };
