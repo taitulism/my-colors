@@ -1,29 +1,29 @@
 const {expect} = require('chai');
-const palette256 = require('../src/256-palette');
+const {create256Color} = require('..');
 
 const TEXT = 'TEXT';
 
 module.exports = function () {
 	describe('.createColor', () => {
 		it('returns a function', () => {
-			const colorize = palette256.createColor(120);
+			const colorize = create256Color(120);
 
 			expect(colorize).to.be.a('function');
 		});
 
 		describe('Colorize', () => {
 			it('wraps given string with ansi chars', () => {
-				const colorize = palette256.createColor(120);
+				const colorize = create256Color(120);
 				const colorized = colorize(TEXT);
 
 				expect(colorized).to.equal(`\u001b[38;5;120m${TEXT}\u001b[0m`);
 			});
 
 			it('supports 256 foreground colors (0-255)', () => {
-				const black  = palette256.createColor(0);
-				const red    = palette256.createColor(160);
-				const yellow = palette256.createColor(190);
-				const white  = palette256.createColor(255);
+				const black  = create256Color(0);
+				const red    = create256Color(160);
+				const yellow = create256Color(190);
+				const white  = create256Color(255);
 
 				const blackText  = black(TEXT);
 				const redText    = red(TEXT);
@@ -37,10 +37,10 @@ module.exports = function () {
 			});
 
 			it('supports 256 background colors', () => {
-				const black  = palette256.createColor(15, 0);
-				const red    = palette256.createColor(15, 160);
-				const yellow = palette256.createColor(0, 190);
-				const white  = palette256.createColor(0, 255);
+				const black  = create256Color(15, 0);
+				const red    = create256Color(15, 160);
+				const yellow = create256Color(0, 190);
+				const white  = create256Color(0, 255);
 
 				const blackBgText  = black(TEXT);
 				const redBgText    = red(TEXT);
@@ -54,13 +54,13 @@ module.exports = function () {
 			});
 
 			it('supports modifiers', () => {
-				const bold      = palette256.createColor(190, 160, 'bold');
-				const dim       = palette256.createColor(190, 160, 'dim');
-				const italic    = palette256.createColor(190, 160, 'italic');
-				const underline = palette256.createColor(190, 160, 'underline');
-				const invert    = palette256.createColor(190, 160, 'invert');
-				const strike    = palette256.createColor(190, 160, 'strike');
-				const underlineBold = palette256.createColor(190, 160, ['bold', 'underline']);
+				const bold      = create256Color(190, 160, 'bold');
+				const dim       = create256Color(190, 160, 'dim');
+				const italic    = create256Color(190, 160, 'italic');
+				const underline = create256Color(190, 160, 'underline');
+				const invert    = create256Color(190, 160, 'invert');
+				const strike    = create256Color(190, 160, 'strike');
+				const underlineBold = create256Color(190, 160, ['bold', 'underline']);
 
 				const bolded     = bold(TEXT);
 				const dimmed     = dim(TEXT);
@@ -80,8 +80,8 @@ module.exports = function () {
 			});
 
 			it('handles cases with no background color', () => {
-				const boldRed1 = palette256.createColor(190, 'bold');
-				const boldRed2 = palette256.createColor(190, null, 'bold');
+				const boldRed1 = create256Color(190, 'bold');
+				const boldRed2 = create256Color(190, null, 'bold');
 
 				const bolded1 = boldRed1(TEXT);
 				const bolded2 = boldRed2(TEXT);

@@ -1,33 +1,33 @@
 const {expect} = require('chai');
-const safePalette = require('../src/safe-palette');
+const {createSafeColor} = require('..');
 
 const TEXT = 'TEXT';
 
 module.exports = function () {
 	describe('.createColor', () => {
 		it('returns a function', () => {
-			const colorize = safePalette.createColor();
+			const colorize = createSafeColor();
 
 			expect(colorize).to.be.a('function');
 		});
 
 		describe('Colorize', () => {
 			it('wraps given string with ansi chars', () => {
-				const colorize = safePalette.createColor('blue');
+				const colorize = createSafeColor('blue');
 				const colorized = colorize(TEXT);
 
 				expect(colorized).to.equal(`\u001b[34m${TEXT}\u001b[0m`);
 			});
 
 			it('supports 8 base colors', () => {
-				const black   = safePalette.createColor('black');
-				const red     = safePalette.createColor('red');
-				const green   = safePalette.createColor('green');
-				const yellow  = safePalette.createColor('yellow');
-				const blue    = safePalette.createColor('blue');
-				const magenta = safePalette.createColor('magenta');
-				const cyan    = safePalette.createColor('cyan');
-				const white   = safePalette.createColor('white');
+				const black   = createSafeColor('black');
+				const red     = createSafeColor('red');
+				const green   = createSafeColor('green');
+				const yellow  = createSafeColor('yellow');
+				const blue    = createSafeColor('blue');
+				const magenta = createSafeColor('magenta');
+				const cyan    = createSafeColor('cyan');
+				const white   = createSafeColor('white');
 
 				const blackText   = black(TEXT);
 				const redText     = red(TEXT);
@@ -49,14 +49,14 @@ module.exports = function () {
 			});
 
 			it('supports background colors', () => {
-				const blackBg   = safePalette.createColor('white', 'black');
-				const redBg     = safePalette.createColor('black', 'red');
-				const greenBg   = safePalette.createColor('black', 'green');
-				const yellowBg  = safePalette.createColor('black', 'yellow');
-				const blueBg    = safePalette.createColor('black', 'blue');
-				const magentaBg = safePalette.createColor('black', 'magenta');
-				const cyanBg    = safePalette.createColor('black', 'cyan');
-				const whiteBg   = safePalette.createColor('black', 'white');
+				const blackBg   = createSafeColor('white', 'black');
+				const redBg     = createSafeColor('black', 'red');
+				const greenBg   = createSafeColor('black', 'green');
+				const yellowBg  = createSafeColor('black', 'yellow');
+				const blueBg    = createSafeColor('black', 'blue');
+				const magentaBg = createSafeColor('black', 'magenta');
+				const cyanBg    = createSafeColor('black', 'cyan');
+				const whiteBg   = createSafeColor('black', 'white');
 
 				const blackBgText   = blackBg(TEXT);
 				const redBgText     = redBg(TEXT);
@@ -78,13 +78,13 @@ module.exports = function () {
 			});
 
 			it('supports modifiers', () => {
-				const bold      = safePalette.createColor('white', 'black', 'bold');
-				const dim       = safePalette.createColor('white', 'red',   'dim');
-				const italic    = safePalette.createColor('white', 'red',   'italic');
-				const underline = safePalette.createColor('white', 'red',   'underline');
-				const invert    = safePalette.createColor('white', 'red',   'invert');
-				const strike    = safePalette.createColor('white', 'red',   'strike');
-				const underlineBold = safePalette.createColor('white', 'red', ['bold', 'underline']);
+				const bold      = createSafeColor('white', 'black', 'bold');
+				const dim       = createSafeColor('white', 'red',   'dim');
+				const italic    = createSafeColor('white', 'red',   'italic');
+				const underline = createSafeColor('white', 'red',   'underline');
+				const invert    = createSafeColor('white', 'red',   'invert');
+				const strike    = createSafeColor('white', 'red',   'strike');
+				const underlineBold = createSafeColor('white', 'red', ['bold', 'underline']);
 
 				const bolded     = bold(TEXT);
 				const dimmed     = dim(TEXT);
@@ -104,8 +104,8 @@ module.exports = function () {
 			});
 
 			it('handles cases with no background color', () => {
-				const boldRed1 = safePalette.createColor('red', 'bold');
-				const boldRed2 = safePalette.createColor('red', null, 'bold');
+				const boldRed1 = createSafeColor('red', 'bold');
+				const boldRed2 = createSafeColor('red', null, 'bold');
 
 				const bolded1 = boldRed1(TEXT);
 				const bolded2 = boldRed2(TEXT);

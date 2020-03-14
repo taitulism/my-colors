@@ -8,20 +8,18 @@ const {
 const FG_RGB = '38;2;';
 const BG_RGB = '48;2;';
 
-const palette = {
-	createColor (fgColor, bgColor, modifier) {
-		const fg = parseTrueColor(fgColor, true);
-		const bg = parseTrueColor(bgColor, false);
-		const mod = parseModifiers(modifier);
+function createColor (fgColor, bgColor, modifier) {
+	const fg = parseTrueColor(fgColor, true);
+	const bg = parseTrueColor(bgColor, false);
+	const mod = parseModifiers(modifier);
 
-		const color = [fg, bg, mod].filter(emptyStrings).join(';');
-		const wrappedColor = START + color + END;
+	const color = [fg, bg, mod].filter(emptyStrings).join(';');
+	const wrappedColor = START + color + END;
 
-		return function colorize (txt) {
-			return wrappedColor + txt + COLOR_RESET;
-		};
-	},
-};
+	return function colorize (txt) {
+		return wrappedColor + txt + COLOR_RESET;
+	};
+}
 
 function parseTrueColor (color, isForeground) {
 	if (color == null) return '';
@@ -58,4 +56,4 @@ function hex2rgb (hex) {
 
 	return [R, G, B];
 }
-module.exports = palette;
+module.exports = createColor;

@@ -29,20 +29,18 @@ const BG_256 = '48;5;';
 	white: 255
 */
 
-const palette = {
-	createColor (fgColorNumber, bgColorNumber, modifier) {
-		const fg = parse256Color(fgColorNumber, true);
-		const bg = parse256Color(bgColorNumber, false);
-		const mod = parseModifiers(modifier);
+function create256Color (fgColorNumber, bgColorNumber, modifier) {
+	const fg = parse256Color(fgColorNumber, true);
+	const bg = parse256Color(bgColorNumber, false);
+	const mod = parseModifiers(modifier);
 
-		const color = [fg, bg, mod].filter(emptyStrings).join(';');
-		const wrappedColor = START + color + END;
+	const color = [fg, bg, mod].filter(emptyStrings).join(';');
+	const wrappedColor = START + color + END;
 
-		return function colorize (txt) {
-			return wrappedColor + txt + COLOR_RESET;
-		};
-	},
-};
+	return function colorize (txt) {
+		return wrappedColor + txt + COLOR_RESET;
+	};
+}
 
 function parse256Color (color256, isForeground) {
 	if (color256 == null) return '';
@@ -58,4 +56,4 @@ function parse256Color (color256, isForeground) {
 	return prefix + color256;
 }
 
-module.exports = palette;
+module.exports = create256Color;

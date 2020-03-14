@@ -1,6 +1,6 @@
-const safePaletteTest = require('./safe-palette');
-const palette256Test = require('./256-palette');
-const trueColorPaletteTest = require('./true-color-palette');
+const safePaletteTest = require('./safe-color-test');
+const palette256Test = require('./256-color-test');
+const trueColorPaletteTest = require('./true-color-test');
 
 describe('node-colors', () => {
 	describe('Safe Palette', safePaletteTest);

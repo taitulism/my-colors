@@ -1,29 +1,29 @@
 const {expect} = require('chai');
-const trueColorPalette = require('../src/true-color-palette');
+const {createColor} = require('..');
 
 const TEXT = 'TEXT';
 
 module.exports = function () {
 	describe('.createColor', () => {
 		it('returns a function', () => {
-			const colorize = trueColorPalette.createColor([248, 28, 229]);
+			const colorize = createColor([248, 28, 229]);
 
 			expect(colorize).to.be.a('function');
 		});
 
 		describe('Colorize', () => {
 			it('wraps given string with ansi chars', () => {
-				const colorize = trueColorPalette.createColor([248, 28, 229]);
+				const colorize = createColor([248, 28, 229]);
 				const colorized = colorize(TEXT);
 
 				expect(colorized).to.equal(`\u001b[38;2;248;28;229m${TEXT}\u001b[0m`);
 			});
 
 			it('supports RGB colors', () => {
-				const red  = trueColorPalette.createColor([248, 28, 229]);
-				const blue = trueColorPalette.createColor([0, 29, 250]);
-				const yellow = trueColorPalette.createColor([237, 250, 0]);
-				const yellowBg = trueColorPalette.createColor([0, 0, 0], [237, 250, 0]);
+				const red  = createColor([248, 28, 229]);
+				const blue = createColor([0, 29, 250]);
+				const yellow = createColor([237, 250, 0]);
+				const yellowBg = createColor([0, 0, 0], [237, 250, 0]);
 
 				const redText    = red(TEXT);
 				const blueText   = blue(TEXT);
@@ -37,10 +37,10 @@ module.exports = function () {
 			});
 
 			it('supports Hex colors', () => {
-				const red  = trueColorPalette.createColor('#f81ce5');
-				const blue = trueColorPalette.createColor('#001dfa');
-				const yellow = trueColorPalette.createColor('#edfa00');
-				const yellowBg = trueColorPalette.createColor('#000000', '#edfa00');
+				const red  = createColor('#f81ce5');
+				const blue = createColor('#001dfa');
+				const yellow = createColor('#edfa00');
+				const yellowBg = createColor('#000000', '#edfa00');
 
 				const redText    = red(TEXT);
 				const blueText   = blue(TEXT);
@@ -54,13 +54,13 @@ module.exports = function () {
 			});
 
 			it('supports modifiers', () => {
-				const bold      = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'bold');
-				const dim       = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'dim');
-				const italic    = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'italic');
-				const underline = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'underline');
-				const invert    = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'invert');
-				const strike    = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'strike');
-				const underlineBold = trueColorPalette.createColor('#001dfa', [237, 250, 0], ['bold', 'underline']);
+				const bold      = createColor('#001dfa', [237, 250, 0], 'bold');
+				const dim       = createColor('#001dfa', [237, 250, 0], 'dim');
+				const italic    = createColor('#001dfa', [237, 250, 0], 'italic');
+				const underline = createColor('#001dfa', [237, 250, 0], 'underline');
+				const invert    = createColor('#001dfa', [237, 250, 0], 'invert');
+				const strike    = createColor('#001dfa', [237, 250, 0], 'strike');
+				const underlineBold = createColor('#001dfa', [237, 250, 0], ['bold', 'underline']);
 
 				const bolded     = bold(TEXT);
 				const dimmed     = dim(TEXT);
@@ -80,8 +80,8 @@ module.exports = function () {
 			});
 
 			it('handles cases with no background color', () => {
-				const boldRed1 = trueColorPalette.createColor('#f81ce5', 'bold');
-				const boldRed2 = trueColorPalette.createColor('#f81ce5', null, 'bold');
+				const boldRed1 = createColor('#f81ce5', 'bold');
+				const boldRed2 = createColor('#f81ce5', null, 'bold');
 
 				const bolded1 = boldRed1(TEXT);
 				const bolded2 = boldRed2(TEXT);
