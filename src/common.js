@@ -10,18 +10,25 @@ const modifiersMap = new Map([
 	['strike',    9],
 ]);
 
-function parseModifier (modifier) {
+function parseModifiers (modifier) {
 	if (!modifier) return '';
+
+	if (Array.isArray(modifier)) {
+		return modifier
+			.map(mod => parseModifiers(mod))
+			.filter(mod => mod)
+			.join(';');
+	}
 
 	const modNumber = modifiersMap.get(modifier);
 
 	if (!modNumber) return '';
 
-	return modNumber;
+	return String(modNumber);
 }
 
 module.exports = {
 	emptyStrings,
 	modifiersMap,
-	parseModifier,
+	parseModifiers,
 };

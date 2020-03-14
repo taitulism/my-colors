@@ -24,7 +24,7 @@ const palette = {
     createColor (fgColor, bgColor, modifier) {
         const fg = parseColor(fgColor, true);
         const bg = parseColor(bgColor, false);
-        const mod = parseModifier(modifier);
+        const mod = parseModifiers(modifier);
 
         return function colorize (txt) {
             const coloredText = mod + fg + bg + txt + COLOR_RESET;

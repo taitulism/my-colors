@@ -1,4 +1,4 @@
-const {emptyStrings, parseModifier} = require('./common');
+const {emptyStrings, parseModifiers} = require('./common');
 const {
 	START,
 	END,
@@ -12,7 +12,7 @@ const palette = {
 	createColor (fgColor, bgColor, modifier) {
 		const fg = parseTrueColor(fgColor, true);
 		const bg = parseTrueColor(bgColor, false);
-		const mod = parseModifier(modifier);
+		const mod = parseModifiers(modifier);
 
 		const color = [fg, bg, mod].filter(emptyStrings).join(';');
 		const wrappedColor = START + color + END;

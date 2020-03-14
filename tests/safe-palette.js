@@ -1,5 +1,5 @@
-const safePalette = require('../src/safe-palette');
 const {expect} = require('chai');
+const safePalette = require('../src/safe-palette');
 
 const TEXT = 'TEXT';
 

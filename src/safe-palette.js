@@ -1,4 +1,4 @@
-const {emptyStrings, parseModifier} = require('./common');
+const {emptyStrings, parseModifiers} = require('./common');
 const {
 	START,
 	FG,
@@ -22,7 +22,7 @@ const palette = {
 	createColor (fgColorName, bgColorName, modifier) {
 		const fg = getColorNumber(fgColorName, true);
 		const bg = getColorNumber(bgColorName, false);
-		const mod = parseModifier(modifier);
+		const mod = parseModifiers(modifier);
 
 		const color = [fg, bg, mod].filter(emptyStrings).join(';');
 		const wrappedColor = START + color + END;
@@ -39,7 +39,7 @@ function getColorNumber (colorName, isForeground) {
 
 	const baseNumber = color8Map.get(colorName);
 
-	if (baseNumber == null) return parseModifier(colorName);
+	if (baseNumber == null) return parseModifiers(colorName);
 
 	return baseNumber + (isForeground ? FG : BG);
 }

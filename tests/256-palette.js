@@ -1,5 +1,5 @@
-const palette256 = require('../src/256-palette');
 const {expect} = require('chai');
+const palette256 = require('../src/256-palette');
 
 const TEXT = 'TEXT';
 
