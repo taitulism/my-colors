@@ -26,10 +26,14 @@ const palette = {
 function parseTrueColor (color, isForeground) {
 	if (color == null) return '';
 
-	if (typeof color == 'string' && color[0] === '#') {
-		color = hex2rgb(color);
+	if (typeof color == 'string') {
+		if (color[0] === '#') {
+			color = hex2rgb(color);
 
-		return parseRgbColor(color, isForeground);
+			return parseRgbColor(color, isForeground);
+		}
+
+		return parseModifiers(color);
 	}
 	else if (Array.isArray(color)) {
 		return parseRgbColor(color, isForeground);

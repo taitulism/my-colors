@@ -60,6 +60,7 @@ module.exports = function () {
 				const underline = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'underline');
 				const invert    = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'invert');
 				const strike    = trueColorPalette.createColor('#001dfa', [237, 250, 0], 'strike');
+				const underlineBold = trueColorPalette.createColor('#001dfa', [237, 250, 0], ['bold', 'underline']);
 
 				const bolded     = bold(TEXT);
 				const dimmed     = dim(TEXT);
@@ -67,6 +68,7 @@ module.exports = function () {
 				const underlined = underline(TEXT);
 				const inverted   = invert(TEXT);
 				const striked    = strike(TEXT);
+				const boldedUnderlined = underlineBold(TEXT);
 
 				expect(bolded).to.equal(`\u001b[38;2;0;29;250;48;2;237;250;0;1m${TEXT}\u001b[0m`);
 				expect(dimmed).to.equal(`\u001b[38;2;0;29;250;48;2;237;250;0;2m${TEXT}\u001b[0m`);
@@ -74,6 +76,18 @@ module.exports = function () {
 				expect(underlined).to.equal(`\u001b[38;2;0;29;250;48;2;237;250;0;4m${TEXT}\u001b[0m`);
 				expect(inverted).to.equal(`\u001b[38;2;0;29;250;48;2;237;250;0;7m${TEXT}\u001b[0m`);
 				expect(striked).to.equal(`\u001b[38;2;0;29;250;48;2;237;250;0;9m${TEXT}\u001b[0m`);
+				expect(boldedUnderlined).to.equal(`\u001b[38;2;0;29;250;48;2;237;250;0;1;4m${TEXT}\u001b[0m`);
+			});
+
+			it('handles cases with no background color', () => {
+				const boldRed1 = trueColorPalette.createColor('#f81ce5', 'bold');
+				const boldRed2 = trueColorPalette.createColor('#f81ce5', null, 'bold');
+
+				const bolded1 = boldRed1(TEXT);
+				const bolded2 = boldRed2(TEXT);
+
+				expect(bolded1).to.equal(`\u001b[38;2;248;28;229;1m${TEXT}\u001b[0m`);
+				expect(bolded2).to.equal(`\u001b[38;2;248;28;229;1m${TEXT}\u001b[0m`);
 			});
 		});
 	});
