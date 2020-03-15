@@ -1,9 +1,4 @@
-const {emptyStrings, parseModifiers} = require('./common');
-const {
-	START,
-	END,
-	COLOR_RESET,
-} = require('./constants');
+const {parseModifiers} = require('./common');
 
 const FG_256 = '38;5;';
 const BG_256 = '48;5;';
@@ -28,20 +23,6 @@ const BG_256 = '48;5;';
 	turquise: 44
 	white: 255
 */
-
-function create256Color (fgColorNumber, bgColorNumber, modifier) {
-	const fg = parse256Color(fgColorNumber, true);
-	const bg = parse256Color(bgColorNumber, false);
-	const mod = parseModifiers(modifier);
-
-	const color = [fg, bg, mod].filter(emptyStrings).join(';');
-	const wrappedColor = START + color + END;
-
-	return function colorize (txt) {
-		return wrappedColor + txt + COLOR_RESET;
-	};
-}
-
 function parse256Color (color256, isForeground) {
 	if (color256 == null) return '';
 	if (typeof color256 == 'number' && (color256 < 0 || color256 > 255)) {
@@ -56,4 +37,4 @@ function parse256Color (color256, isForeground) {
 	return prefix + color256;
 }
 
-module.exports = create256Color;
+module.exports = parse256Color;

@@ -1,12 +1,8 @@
-const {emptyStrings, parseModifiers} = require('./common');
-const {
-	START,
-	END,
-	COLOR_RESET,
-} = require('./constants');
+const {parseModifiers} = require('./common');
 
 const FG = 30;
 const BG = 40;
+
 const color8Map = new Map([
 	['black',   0],
 	['red',     1],
@@ -18,20 +14,7 @@ const color8Map = new Map([
 	['white',   7],
 ]);
 
-function createSafeColor (fgColorName, bgColorName, modifier) {
-	const fg = getColorNumber(fgColorName, true);
-	const bg = getColorNumber(bgColorName, false);
-	const mod = parseModifiers(modifier);
-
-	const color = [fg, bg, mod].filter(emptyStrings).join(';');
-	const wrappedColor = START + color + END;
-
-	return function colorize (txt) {
-		return wrappedColor + txt + COLOR_RESET;
-	};
-}
-
-function getColorNumber (colorName, isForeground) {
+function parseColorName (colorName, isForeground) {
 	if (!colorName) return '';
 	colorName = colorName.toLowerCase();
 
@@ -42,4 +25,4 @@ function getColorNumber (colorName, isForeground) {
 	return baseNumber + (isForeground ? FG : BG);
 }
 
-module.exports = createSafeColor;
+module.exports = parseColorName;

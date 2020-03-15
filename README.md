@@ -4,8 +4,8 @@ node-colors
 ===========
 Colorize terminal text for Node
 
-## `createColorizer(foreground, background, modifier)`
-Create a colorizer function.
+## `createColor(foreground, background, modifier)`
+Returns a colorizer function.
 
 Both foreground & background arguments expect a color.
 A color could be one of the following:
