@@ -3,7 +3,7 @@ const createColor = require('../');
 const TEXT = 'This is the message';
 
 const x = createColor('#000000', [77, 160, 255], ['bold', 'underline']);
-const y = createColor('#000000', [77, 160, 255], ['underline']);
+const y = createColor('#fff', [77, 160, 255], ['underline']);
 
 console.log(x(TEXT));
 console.log(y(TEXT));

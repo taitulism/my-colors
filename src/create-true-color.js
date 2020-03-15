@@ -19,6 +19,10 @@ function parseRgbColor (RGBColor, isForeground) {
 function hex2rgb (hex) {
 	hex = hex.substr(1);
 
+	if (hex.length === 3) {
+		hex = hex.split('').map(char => char + char).join('');
+	}
+
 	const num = parseInt(hex, 16);
 	const R = (num >> 16) & 0xFF;
 	const G = (num >> 8) & 0xFF;
