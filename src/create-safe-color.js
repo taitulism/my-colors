@@ -1,4 +1,4 @@
-const {parseModifiers} = require('./common');
+const parseModifiers = require('./parse-modifiers');
 
 const FG = 30;
 const BG = 40;

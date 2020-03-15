@@ -2,7 +2,14 @@ const parseTrueColor = require('./src/create-true-color');
 const parse256Color = require('./src/create-256-color');
 const parseColorName = require('./src/create-safe-color');
 
-const {START, END, COLOR_RESET, parseModifiers, emptyStrings} = require('./src/common');
+const parseModifiers = require('./src/parse-modifiers');
+const ESC_CHAR = '\u001B';
+const START = ESC_CHAR + '[';
+const END = 'm';
+const COLOR_RESET = ESC_CHAR + '[0m';
+
+// filter
+const emptyStrings = item => item !== '';
 
 function createColor (fgColor, bgColor, modifiers) {
 	const fg = parseColor(fgColor, true);

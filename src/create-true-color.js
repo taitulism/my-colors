@@ -4,8 +4,6 @@ const BG_RGB = '48;2;';
 function parseTrueColor (color, isForeground) {
 	if (color[0] === '#') {
 		color = hex2rgb(color);
-
-		return parseRgbColor(color, isForeground);
 	}
 
 	return parseRgbColor(color, isForeground);

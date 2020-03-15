@@ -1,4 +1,4 @@
-const {parseModifiers} = require('./common');
+const parseModifiers = require('./parse-modifiers');
 
 const FG_256 = '38;5;';
 const BG_256 = '48;5;';
