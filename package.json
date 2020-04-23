@@ -20,5 +20,18 @@
       "eslint": "^6.8.0",
       "mocha": "^7.1.0",
       "chai": "^4.2.0"
-   }
+   },
+   "keywords": [
+	   "colors",
+	   "color",
+	   "colorize",
+	   "terminal",
+	   "cli",
+	   "shell",
+	   "ansi",
+	   "rgb",
+	   "hex",
+	   "256",
+	   "node"
+   ]
 }
