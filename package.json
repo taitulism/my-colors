@@ -1,7 +1,7 @@
 {
    "name": "my-colors",
    "description": "Colorize terminal text for Node",
-   "version": "0.0.0",
+   "version": "1.0.0",
    "license": "MIT",
    "main": "./index.js",
    "author": "Taitu Lizenbaum <taitu.dev@gmail.com>",
@@ -22,16 +22,16 @@
       "chai": "^4.2.0"
    },
    "keywords": [
-	   "colors",
-	   "color",
-	   "colorize",
-	   "terminal",
-	   "cli",
-	   "shell",
-	   "ansi",
-	   "rgb",
-	   "hex",
-	   "256",
-	   "node"
+      "colors",
+      "color",
+      "colorize",
+      "terminal",
+      "cli",
+      "shell",
+      "ansi",
+      "rgb",
+      "hex",
+      "256",
+      "node"
    ]
 }
