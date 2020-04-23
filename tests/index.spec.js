@@ -6,7 +6,7 @@ const trueColorPaletteTest = require('./true-color-test');
 
 const createColor = require('../');
 
-describe('node-colors', () => {
+describe('my-colors', () => {
 	it('returns a colorizer function', () => {
 		const colorize = createColor();
 

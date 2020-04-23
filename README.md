@@ -1,7 +1,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-node-colors
-===========
+my-colors
+=========
 Colorize terminal text for Node
 
 ## `createColor(foreground, background, modifier)`
@@ -17,7 +17,7 @@ A color could be one of the following:
 Example:
 ```js
 // my-app.js
-const createColor = require('node-colors');
+const createColor = require('my-colors');
 
 const warning = createColor('yellow', 'red', 'bold');
 const msg = warning('Attention: Do not do that.');
@@ -50,5 +50,6 @@ Modifiers
 
 Example:
 ```js
+// using hex color foreground, RGB background, and bold & underline modifiers
 createColor('#000000', [77, 160, 255], ['bold', 'underline']);
 ```
